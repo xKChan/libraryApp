@@ -1,5 +1,6 @@
 // const prompt = require("prompt-sync")();
 
+// Array to store book information
 let myLibrary = [
   {
     title: "The Hobbit",
@@ -21,6 +22,7 @@ let myLibrary = [
   },
 ];
 
+// book constructor for book properties
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
@@ -31,6 +33,7 @@ function Book(title, author, pages, read) {
   };
 }
 
+// Grab information from form --> stores in a new book --> book gets stored in library array
 function addBookToLibrary() {
   let title = document.querySelector("#title").value;
   let author = document.querySelector("#author").value;
@@ -42,11 +45,10 @@ function addBookToLibrary() {
   console.log(myLibrary);
 }
 
+// button to submit user infomration and calls addBookToLibrary to store the book information
 document
   .querySelector("#new-book-form")
   .addEventListener("submit", function (event) {
     event.preventDefault();
     addBookToLibrary();
   });
-
-// console.log(myLibrary);
