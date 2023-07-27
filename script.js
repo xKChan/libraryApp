@@ -28,9 +28,6 @@ function Book(title, author, pages, read) {
   this.author = author;
   this.pages = pages;
   this.read = read;
-  this.info = function () {
-    return `${title} by ${author}, ${pages}, ${read}`;
-  };
 }
 
 // Grab information from form --> stores in a new book --> book gets stored in library array
@@ -42,7 +39,7 @@ function addBookToLibrary() {
 
   let addBook = new Book(title, author, pages, read);
   myLibrary.push(addBook);
-  console.log(myLibrary);
+  displayBooks();
 }
 
 // button to submit user infomration and calls addBookToLibrary to store the book information
@@ -52,3 +49,19 @@ document
     event.preventDefault();
     addBookToLibrary();
   });
+
+function displayBooks() {
+  // Removes all books from html so does not duplicate
+  let showBooks = document.querySelector(".books");
+  while (showBooks.firstChild) {
+    showBooks.removeChild(showBooks.firstChild);
+  }
+  //   Iterate through the library araay to print each book
+  for (let i = 0; i < myLibrary.length; i++) {
+    let book = myLibrary[i];
+    let bookEl = document.createElement("div");
+    bookEl.textContent = "";
+    bookEl.textContent = `${book.title}`;
+    showBooks.appendChild(bookEl);
+  }
+}
