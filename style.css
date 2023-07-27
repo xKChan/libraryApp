@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.container {
+  padding-top: 50px;
+}
+
+#new-book-btn {
+  margin: auto;
+  display: block;
+  padding: 15px 50px;
+}
+
+.books-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  gap: 35px;
+  padding-top: 40px;
+}
+
+.cards {
+  border: 1px black solid;
+  border-radius: 20px;
+  align-self: center;
+  text-align: center;
+  display: grid;
+  grid-template-rows: auto;
+}
+
+.cards h3 {
+  font-size: 25px;
+  text-decoration: underline;
+}
+
+.cards p {
+  font-style: italic;
+}
+
+#trash {
+  width: 20px;
+  grid-area: 1 / 1 / 2 / 2;
+  justify-self: end;
+  padding-top: 10px;
+  padding-right: 10px;
+}
