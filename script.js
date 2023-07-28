@@ -94,12 +94,18 @@ function addBookForm() {
 }
 
 // Remove book
-function removeBook(index) {
+function removeBook() {
   let deleteBook = document.querySelectorAll("[data-book]");
   deleteBook.forEach((trash) => {
     trash.addEventListener("click", () => {
-      let bookNum = data - book;
-      console.log(bookNum);
+      for (let i = 0; i < myLibrary.length; i++) {
+        if (trash.dataset.book == i) {
+          myLibrary.splice(i, 1);
+          displayBooks();
+          console.log(myLibrary);
+          return;
+        }
+      }
     });
   });
 }
