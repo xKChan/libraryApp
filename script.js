@@ -6,7 +6,7 @@ let myLibrary = [
     title: "The Hobbit",
     author: "J.R.R. Tolkien",
     pages: 295,
-    read: "Not Read",
+    read: "Read",
   },
   {
     title: "Harry Potter",
@@ -68,10 +68,10 @@ function displayBooks() {
     let bookEl = document.createElement("div");
     bookEl.setAttribute("class", "cards");
     bookEl.innerHTML = "";
-    bookEl.innerHTML = `<h3 class "bookTitle">${book.title}</h3> Written By: ${book.author} <p>${book.pages} Pages / ${book.read}</p>`;
+    bookEl.innerHTML = `<h3 class = "bookTitle">${book.title}</h3> Written By: ${book.author} <p>${book.pages} Pages </p> <button class = "updateread">${book.read}</button>`;
     const cancelImg = document.createElement("img");
     cancelImg.setAttribute("id", "trash");
-    cancelImg.setAttribute("data-book", i);
+    cancelImg.setAttribute("data-index", i);
     cancelImg.src = "/trash-can-outline.svg";
     bookEl.appendChild(cancelImg);
     showBooks.appendChild(bookEl);
@@ -95,11 +95,11 @@ function addBookForm() {
 
 // Remove book
 function removeBook() {
-  let deleteBook = document.querySelectorAll("[data-book]");
+  let deleteBook = document.querySelectorAll("[data-index]");
   deleteBook.forEach((trash) => {
     trash.addEventListener("click", () => {
       for (let i = 0; i < myLibrary.length; i++) {
-        if (trash.dataset.book == i) {
+        if (trash.dataset.index == i) {
           myLibrary.splice(i, 1);
           displayBooks();
           console.log(myLibrary);
@@ -112,3 +112,4 @@ function removeBook() {
 
 addBookForm();
 cancel();
+displayBooks();
