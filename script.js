@@ -3,22 +3,22 @@
 // Array to store book information
 let myLibrary = [
   {
-    title: "The Hobbit",
-    author: "J.R.R. Tolkien",
+    title: 'The Hobbit',
+    author: 'J.R.R. Tolkien',
     pages: 295,
-    read: "Read",
+    read: 'Read',
   },
   {
-    title: "Harry Potter",
-    author: "J. K. Rowling",
+    title: 'Harry Potter',
+    author: 'J. K. Rowling',
     pages: 320,
-    read: "Read",
+    read: 'Read',
   },
   {
-    title: "The Witcher",
-    author: "Andrzej Sapkowski",
+    title: 'The Witcher',
+    author: 'Andrzej Sapkowski',
     pages: 400,
-    read: "Not Read",
+    read: 'Not Read',
   },
 ];
 
@@ -33,14 +33,14 @@ function Book(title, author, pages, read) {
 // Grab information from form --> stores in a new book --> book gets stored in library array
 function addBookToLibrary() {
   let readCheck = true;
-  let title = document.querySelector("#title").value;
-  let author = document.querySelector("#author").value;
-  let pages = document.querySelector("#pages").value;
-  let read = document.querySelector("#read").checked;
+  let title = document.querySelector('#title').value;
+  let author = document.querySelector('#author').value;
+  let pages = document.querySelector('#pages').value;
+  let read = document.querySelector('#read').checked;
   if (read == true) {
-    readCheck = "Read";
+    readCheck = 'Read';
   } else {
-    readCheck = "Not Read";
+    readCheck = 'Not Read';
   }
 
   let addBook = new Book(title, author, pages, readCheck);
@@ -50,29 +50,29 @@ function addBookToLibrary() {
 
 // button to submit user infomration and calls addBookToLibrary to store the book information
 document
-  .querySelector("#new-book-form")
-  .addEventListener("submit", function (event) {
+  .querySelector('#new-book-form')
+  .addEventListener('submit', function (event) {
     event.preventDefault();
     addBookToLibrary();
   });
 
 function displayBooks() {
   // Removes all books from html so does not duplicate
-  let showBooks = document.querySelector(".books-container");
+  let showBooks = document.querySelector('.books-container');
   while (showBooks.firstChild) {
     showBooks.removeChild(showBooks.firstChild);
   }
   //   Iterate through the library araay to print each book
   for (let i = 0; i < myLibrary.length; i++) {
     let book = myLibrary[i];
-    let bookEl = document.createElement("div");
-    bookEl.setAttribute("class", "cards");
-    bookEl.innerHTML = "";
+    let bookEl = document.createElement('div');
+    bookEl.setAttribute('class', 'cards');
+    bookEl.innerHTML = '';
     bookEl.innerHTML = `<h3 class = "bookTitle">${book.title}</h3> Written By: ${book.author} <p>${book.pages} Pages </p> <button class = "updateread">${book.read}</button>`;
-    const cancelImg = document.createElement("img");
-    cancelImg.setAttribute("id", "trash");
-    cancelImg.setAttribute("data-index", i);
-    cancelImg.src = "/trash-can-outline.svg";
+    const cancelImg = document.createElement('img');
+    cancelImg.setAttribute('id', 'trash');
+    cancelImg.setAttribute('data-index', i);
+    cancelImg.src = '/trash-can-outline.svg';
     bookEl.appendChild(cancelImg);
     showBooks.appendChild(bookEl);
   }
@@ -81,23 +81,23 @@ function displayBooks() {
 
 // Hide form when cancel is clicked
 function cancel() {
-  document.querySelector("#cancel").addEventListener("click", () => {
-    document.querySelector("#new-book-form").style.display = "none";
+  document.querySelector('#cancel').addEventListener('click', () => {
+    document.querySelector('#new-book-form').style.display = 'none';
   });
 }
 
 // Form pops up
 function addBookForm() {
-  document.querySelector("#new-book-btn").addEventListener("click", () => {
-    document.querySelector("#new-book-form").removeAttribute("style");
+  document.querySelector('#new-book-btn').addEventListener('click', () => {
+    document.querySelector('#new-book-form').removeAttribute('style');
   });
 }
 
 // Remove book
 function removeBook() {
-  let deleteBook = document.querySelectorAll("[data-index]");
-  deleteBook.forEach((trash) => {
-    trash.addEventListener("click", () => {
+  let deleteBook = document.querySelectorAll('[data-index]');
+  deleteBook.forEach(trash => {
+    trash.addEventListener('click', () => {
       for (let i = 0; i < myLibrary.length; i++) {
         if (trash.dataset.index == i) {
           myLibrary.splice(i, 1);
